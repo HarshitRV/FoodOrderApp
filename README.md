@@ -3,3 +3,4 @@ This app implements the cart functionality, you can add/remove items from the ca
 It keeps the references of items added in the local storage, so that you can see the items even after refreshing the page.
 
 ### Checkout the app on netlify
+[Food Cart App](https://foodcartapp.netlify.app/)

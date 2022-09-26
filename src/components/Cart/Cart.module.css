@@ -1,0 +1,19 @@
+.width100 {
+    width: 100%;
+}
+
+.widthBtn {
+    width: 70px;
+}
+
+.width129px {
+    width: 129px;
+}
+
+.fixWidth {
+    min-width: 45px;
+}
+
+.width449px {
+    width: 449px;
+}

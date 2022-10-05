@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+/**
+ * Custom Hooks
+ */
+import useHttp from "../../hooks/use-http";
+
+/**
+ * Components
+ */
 import Card from "../UI/Card/Card";
 import MealItem from "./MealItem/MealItem";
-import { DUMMY_MEALS } from "../../sample/sample.data";
 
 const AvailableMeals = props => {
-    const mealList = DUMMY_MEALS.map((meal, index) => (
+    const { 
+        fetchItems: fetchMeals,
+        items: meals,
+        isLoading,
+        httpError
+    } = useHttp();
+
+    useEffect(()=>{
+        fetchMeals("http://localhost:3001/meals");
+    }, [fetchMeals])
+    
+
+    const mealList = meals.map((meal, index) => (
         <MealItem 
             key={index}
-            id={meal.id}
+            id={meal._id}
             mealTitle={meal.title}
             mealDescription={meal.description}
             mealCost={meal.price}
         />
     ));
+
     return (
-        <section>
+        <section className="mb-3">
             <Card>
                 <ul className="list-group list-group-flush">
-                    {mealList}
+                    {isLoading && "Loading..."}
+                    {httpError}
+                    {!isLoading && !httpError && mealList}
                 </ul>
             </Card>
         </section>

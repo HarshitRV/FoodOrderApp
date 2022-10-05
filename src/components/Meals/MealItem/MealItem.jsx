@@ -13,6 +13,8 @@ const MealItem = props => {
             amount
         }
         // Adding the item to cart.
+        console.log("Item adding to cart - ");
+        console.log(item);
         cartCtx.addItem(item);
     }
 

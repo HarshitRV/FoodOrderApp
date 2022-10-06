@@ -13,7 +13,7 @@ import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = props => {
     const { 
-        fetchItems: fetchMeals,
+        sendRequest: fetchMeals,
         items: meals,
         isLoading,
         httpError

@@ -5,11 +5,15 @@ const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [httpError, setHttpError] = useState(null);
 
-    const fetchItems = useCallback(async (url) => {
+    const sendRequest = useCallback(async (url, config={}) => {
         setIsLoading(true);
         setHttpError(null);
         try {
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                method: config.method ?? "GET",
+                body: config.body ? JSON.stringify(config.body) : null,
+                headers: config.headers ?? {}
+            });
             if (!res.ok) {
                 throw new Error("Failed to fetch data");
             }
@@ -21,7 +25,7 @@ const useHttp = () => {
         setIsLoading(false);
     }, []);
 
-    return { items, isLoading, httpError, fetchItems };
+    return { items, isLoading, httpError, sendRequest };
 }
 
 export default useHttp;

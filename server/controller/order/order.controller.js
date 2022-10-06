@@ -1,6 +1,5 @@
 // Models
 const Order = require("../../model/order.model");
-const Meal = require("../../model/meals.model");
 
 // Utils
 const handleAsync = require("../../utils/handleAync");
